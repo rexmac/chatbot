@@ -1,11 +1,11 @@
 # Chatbot Demo
 A demonstration of a very rudimentary chatbot --- Actually, there's no AI yet, so it's not much of a bot at the moment.
 
-Live demo: _not currently online_
+Live demo: http://chatbot.rexmac.com
 
-The server uses [NodeJS](http://nodejs.org/) and [Socket.IO](http://socket.io/), and [Socket.IO-sessions](https://github.com/aviddiviner/Socket.IO-sessions).
+The server uses [NodeJS](http://nodejs.org/), [Socket.IO](http://socket.io/), and [Socket.IO-sessions](https://github.com/aviddiviner/Socket.IO-sessions).
 
-The client uses [Bootstrap](http://twitter.github.com/bootstrap/), [H5BP](http://html5boilerplate.com/), [jQuery CSSEmoticons plugin](http://os.alfajango.com/css-emoticons/).
+The client uses [Bootstrap](http://twitter.github.com/bootstrap/), [H5BP](http://html5boilerplate.com/), and [jQuery CSSEmoticons](http://os.alfajango.com/css-emoticons/).
 
 This project is several years old. I recently (29-03-13) updated it to use [Grunt](http://gruntjs.com/) and to ensure it still (somewhat) works. This is one of many projects that I hope to experiment with more in the future if I ever find the time.
 
@@ -14,12 +14,12 @@ This project is several years old. I recently (29-03-13) updated it to use [Grun
 1. Clone this repository.
 2. Run `npm install && bower install`.
 3. Run `grunt`.
-4. Start the server: `$ npm start`
+4. Start the server: `npm start`
 5. Navigate to `http://127.0.0.1:1337` in your browser.
 
 ## Usage
 
-Type messages in the input box and receive a response. It is really is that simple. EvVen more so, since there is no AI yet so the server only has one response. Unless you type in one of the commands described below.
+Type messages in the input box and receive a response. It really is that simple. Even more so, since there is no AI yet so the server only has one response. Unless you type in one of the commands described below.
 
 ### Commands
 
