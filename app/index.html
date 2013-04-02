@@ -1,0 +1,73 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Chatbot Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+    <!--[if lt IE 10]>
+        <div class="chromeframe alert alert-error"><strong>Warning!</strong> You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</div>
+    <![endif]-->
+
+    <div class="container">
+        <header>
+            <h1>Chatbot Demo</h1>
+        </header>
+
+        <div id="main" role="main">
+
+            <div id="chat-frame">
+                <ul id="chat-messages"></ul>
+                <form id="chat-form">
+                    <input type="text" id="chat-input" name="chat-input" />
+                    <button class="btn btn-primary">Send</button>
+                </form>
+            </div>
+
+            <p>Sadly, I have not had time to implement the AI, so this bot does very little at the moment.</p>
+            <p>The <code>/help</code> command can be used to see a list of working commands.</p>
+            <p>The last 50 commands are stored for reuse. You can use the <i class="icon-arrow-up"></i> and <i class="icon-arrow-down"></i> keys to navigate the command history.</p>
+        </div>
+
+        <footer>
+            <div class="row">
+                <div class="span8">
+                    <p>Copyright &copy; 2011 Rex McConnell.</p>
+                    <p>Demo powered by <a href="http://nodejs.org/">NodeJS</a>, <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, <a href="http://html5boilerplate.com/">H5BP</a>, and <a href="http://os.alfajango.com/css-emoticons/">jQuery CSSEmoticons plugin</a> by Steve Schwartz.</p>
+                </div>
+                <div class="span4">
+                    <a class="html5-logo pull-right" href="http://www.w3.org/html/logo/"><img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-graphics-semantics.png" width="229" height="64" alt="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Graphics, 3D &amp; Effects, and Semantics" title="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Graphics, 3D &amp; Effects, and Semantics"></a>
+                </div>
+        </footer>
+    </div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+
+    <script src='socket.io/socket.io.js'></script>
+    <script src='socket.io/socket.io-sessions.js'></script>
+
+    <!-- build:js js/main.js -->
+    <script src="js/jquery.cssemoticons.js"></script>
+    <script src="js/main.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>

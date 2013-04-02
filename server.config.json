@@ -1,0 +1,6 @@
+{
+    "commands": [
+        "server.commands.js"
+    ],
+    "port": 1337
+}

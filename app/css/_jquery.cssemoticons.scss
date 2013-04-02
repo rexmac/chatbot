@@ -1,0 +1,193 @@
+/*
+ * jQuery CSSEmoticons plugin 0.2.9
+ *
+ * Copyright (c) 2010 Steve Schwartz (JangoSteve)
+ *
+ * Dual licensed under the MIT and GPL licenses:
+ *   http://www.opensource.org/licenses/mit-license.php
+ *   http://www.gnu.org/licenses/gpl.html
+ *
+ * Date: Sun Oct 22 1:00:00 2010 -0500
+ */
+
+ /* Basic styles for emoticons */
+span.css-emoticon {
+  font-family: "Trebuchet MS"; /* seems to give the best and most consistent emoticon appearance */
+  font-size: 0.65em;
+  font-weight: bold;
+  color: #000000;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  @include transform(rotate(90deg));
+  width: 1.54em; /* note that this is a multiple of this span's font-size, not containing text font-size */
+  height: 1.54em; /* so, relative to containing text, width and height are 0.9 x 1.6 = 1.44em */
+  text-align: center;
+  padding: 0;
+  line-height: 1.34em;
+  @include border-radius(1.54em);
+  @include box-shadow(1px -1px 2px rgba(0,0,0,0.5));
+  border: 1px solid rgba(0,0,0,0.25);
+  background-color: #ffcc00;
+  @include background-image(linear-gradient(center right, rgb(255,204,0) 41%, rgb(255,221,85) 56%, rgb(255,238,170) 100%));
+  @include transition-property(color, background, transform);
+  @include transition-duration(1s, 1s);
+  @include transition-timing-function(linear, ease-in);
+}
+
+/* Styles for two-character emoticons that need more letter-spacing for proportionality */
+span.css-emoticon.spaced-emoticon {
+  padding-left: 0.2em;
+  width: 1.34em;
+  letter-spacing: 0.2em;
+}
+
+/* This is a dirty dirty hack, because webkit doesn't properly do the padding+width=total-width as it should
+   I think the width of the border may be throwing things off, because it's more noticable for small icons */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  span.css-emoticon.spaced-emoticon {
+    width: 1.4em;
+  }
+}
+
+/* Styles for emoticons that need to have smaller characters to fit inside the circle */
+span.css-emoticon.small-emoticon {
+  font-size: 0.55em;
+  width: 1.82em;
+  height: 1.82em;
+  line-height: 1.72em;
+  @include border-radius(1.82em);
+}
+
+span.css-emoticon.small-emoticon.spaced-emoticon {
+  padding-left: 0;
+  width: 1.82em;
+  letter-spacing: 0.1em;
+}
+
+/* Styles for additional colors */
+span.css-emoticon.red-emoticon {
+  background-color: #eb0542;
+  @include background-image(linear-gradient(center right, rgb(235,5,66) 41%, rgb(235,38,90) 56%, rgb(250,55,110) 100%));
+}
+
+span.css-emoticon.pink-emoticon {
+  background-color: #ff8fd4;
+  @include background-image(linear-gradient(center right, rgb(255,143,212) 41%, rgb(255,153,216) 56%, rgb(255,173,225) 100%));
+}
+
+span.css-emoticon.heart-emoticon {
+  background-color: transparent;
+  border: none;
+  @include box-shadow(none);
+  position: relative;
+  z-index: 1;
+  width: 18px;
+  height: 16px;
+  margin-top: 1px;
+}
+span.css-emoticon.heart-emoticon.counter-rotated {
+  @include transform(rotate(0deg));
+  background-image: none;
+  background-color: transparent;
+  @include box-shadow(none);
+}
+span.css-emoticon.heart-emoticon.counter-rotated span {
+  display: block;
+  @include transform(rotate(-90deg));
+  margin-left: -2px;
+}
+span.css-emoticon.un-transformed-emoticon.heart-emoticon,
+span.css-emoticon.animated-emoticon.heart-emoticon:hover {
+  @include transform(rotate(90deg));
+}
+span.css-emoticon.heart-emoticon:before,
+span.css-emoticon.heart-emoticon:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  left: 9px;
+  top: 0;
+  width: 9px;
+  height: 14px;
+  background-color: red;
+  @include border-radius(9px 9px 0 0);
+  @include transform(rotate(-45deg));
+  -webkit-transform-origin: 0 100%;
+     -moz-transform-origin: 0 100%;
+      -ms-transform-origin: 0 100%;
+       -o-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  @include box-shadow(1px -1px 2px rgba(0, 0, 0, 0.5));
+}
+span.css-emoticon.heart-emoticon:after {
+  left: 0;
+  @include transform(rotate(45deg));
+  -webkit-transform-origin: 100% 100%;
+     -moz-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+       -o-transform-origin: 100% 100%;
+          transform-origin: 100% 100%;
+}
+
+/* styles for emoticons that need no rotation, like O_o */
+span.css-emoticon.no-rotate {
+  @include transform(rotate(0deg));
+  @include box-shadow(1px 1px 2px rgba(0,0,0,0.5));
+  font-size: 0.45em;
+  width: 2.2em;
+  height: 2.2em;
+  line-height: 1.9em;
+  @include border-radius(2.2em);
+  @include background-image(linear-gradient(center bottom, rgb(255,204,0) 41%, rgb(255,221,85) 56%, rgb(255,238,170) 100%));
+}
+
+span.css-emoticon.no-rotate.red-emoticon {
+  @include background-image(linear-gradient(center bottom, rgb(235,5,66) 41%, rgb(235,38,90) 56%, rgb(250,55,110) 100%));
+}
+
+span.css-emoticon.no-rotate.pink-emoticon {
+  @include background-image(linear-gradient(center bottom, rgb(255,143,212) 41%, rgb(255,153,216) 56%, rgb(255,173,225) 100%));
+}
+
+/* Styles for emoticons that need to be rotated counter-clockwise, like <3 */
+span.css-emoticon.counter-rotated {
+  @include transform(rotate(-90deg));
+  @include box-shadow(-1px 1px 2px rgba(0,0,0,0.5));
+  @include background-image(linear-gradient(center left, rgb(255,204,0) 41%, rgb(255,221,85) 56%, rgb(255,238,170) 100%));
+}
+
+span.css-emoticon.counter-rotated.red-emoticon {
+  @include background-image(linear-gradient(center left, rgb(235,5,66) 41%, rgb(235,38,90) 56%, rgb(250,55,110) 100%));
+}
+
+span.css-emoticon.counter-rotated.pink-emoticon {
+  @include background-image(linear-gradient(center left, rgb(255,143,212) 41%, rgb(255,153,216) 56%, rgb(255,173,225) 100%));
+}
+
+/* Styles for animated states */
+span.css-emoticon.un-transformed-emoticon, span.css-emoticon.animated-emoticon:hover {
+    //font-size: inherit;
+    //font-weight: inherit;
+    //vertical-align: inherit;
+    //line-height: inherit;
+    //font-family: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    overflow: visible;
+    @include transform(rotate(0deg));
+    background: none;
+    background-image: none;
+    @include box-shadow(none);
+    border-color: transparent;
+}
+
+span.css-emoticon.nintendo-controller {
+  font-size: .8em;
+  height: 1.2em;
+  line-height: 1em;
+  width: 2.7em;
+  vertical-align: bottom;
+  @include border-radius(0);
+  @include background-image(linear-gradient(center bottom, rgb(116,121,140) 9%, rgb(165,170,189) 55%));
+}
